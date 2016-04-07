@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" charset="UTF-8" content="initial-scale=1.0, user-scalable=no" />
+	<title>Get Location</title>
+	<script type="text/javascript" src=http://maps.google.com/maps/api/js?sensor=false />
+	<script type="text/javascript">
+	function showObject(obj, k) {
+		// object
+		if(!obj) {
+			return;
+			}
+		for (var i in obj) {
+			if(typeof(obj[i]) != "object" || obj[i] == null) {
+				for (var j=0; j<k; j++) {
+					document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+				}
+				document.write(i + ":" + obj[i] + "<br/>");
+			}
+			else
+			{
+				document.write(i + ":" + "<br/>");
+				showObject(obj[i], k+1);
+			}
+		}
+	}
+	
+	function get_location(){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(show_map, handle_error, 
+			{enableHighAccuracy:true, maximumAge:1000});
+		}
+		else
+		{
+			alert("your browser do not support using HTML5 to get the location. ");
+		}
+	}
+	
+	function handle_error(err){
+		// wrong duill
+		switch(err.code){
+			case 1:
+				alert("location service can not!");
+				break;
+			case 2:
+				alert("can not get the location!");
+				break;
+			case 3:
+				alert("timeout!");
+				break;
+			default:
+				alert("was wrong!");
+				break;
+		}
+	}
+	
+	function show_map(position){
+		//location info
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+		showObject(position, 0);
+	}
+	get_location();
+	</script>
+</head>
+<body>
+	<div id="map" style="width:400px; height:400px"></div>
+</body>
+
+<form name="form1">
+	<label for=username>Name</label>
+	<input name=username id=username type=text required />
+	<br/>
+</form>
+
+</html>

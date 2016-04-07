@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<div style="text-align:center;">
+		<button onclick="playPause()">Play/Pause</button>
+		<button onclick="makeBig()">Bigger</button>
+		<button onclick="makeSmall()">Smaller</button>
+		<br/>
+
+		<video id="v1" width="320" height="240" style="margin-top:15px" controls preload="auto">
+			<!--<video id="v1" width="320" height="240" style="margin-top:15px" controls autoplay="false" loop="false" preload="auto">-->
+			<source src="./video/movie.ogg" type="video/ogg">
+			<source src="./video/movie.mp4" type="video/mp4"> Yor browser does not support the video tag.
+		</video>
+	</div>
+
+	<script type="text/javascript">
+	var myv1=document.getElementById("v1");
+	function playPause(){
+		if (myv1.paused){
+			myv1.setAttribute*
+			myv1.play();
+		} else {
+			myv1.pause();
+		}
+	}
+
+	function makeBig(){
+		myv1.width=840;
+	}
+	
+	function makeSmall(){
+		myv1.width=240;
+	}
+	</script>
+</body>
+
+</html>
